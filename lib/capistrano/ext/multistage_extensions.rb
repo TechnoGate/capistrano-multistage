@@ -18,6 +18,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
             # Get the database of the source
             system "bundle exec cap #{source_stage} db:export #{random_folder}/database.sql"
+            system "bunzip2 #{random_folder}/database.sql.bz2"
 
             # Send it to the target
             system "bundle exec cap #{target_stage} db:import #{random_folder}/database.sql"
