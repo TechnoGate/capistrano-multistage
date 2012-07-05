@@ -17,7 +17,7 @@ Capistrano::Configuration.instance(:must_exist).load do
             FileUtils.mkdir_p random_folder
 
             # Get the database of the source
-            system "bundle exec cap #{source_stage} db:export #{random_folder}/database.sql"
+            system "bundle exec cap #{source_stage} db:export #{random_folder}/database.sql.bz2"
             system "bunzip2 #{random_folder}/database.sql.bz2"
 
             # Send it to the target
